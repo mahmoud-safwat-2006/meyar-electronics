@@ -16,24 +16,40 @@ exports.paymentIntent = async (req, res, next) => {
       const dbProducts = await Products.find({ _id: { $in: productIds } });
 
       let subTotal = 0;
+      let eligibleSubtotal = 0;
       for (const item of items) {
         const prodId = (item._id || item.productId).toString();
         const dbProd = dbProducts.find((x) => x._id.toString() === prodId);
         if (dbProd) {
           const qty = Number(item.orderQuantity || item.quantity) || 1;
-          subTotal += Number(dbProd.price) * qty;
+          const itemTotal = Number(dbProd.price) * qty;
+          subTotal += itemTotal;
         }
       }
 
       // ب. التحقق من صحة الكوبون server-side
       let discountAmount = 0;
-      if (couponCode) {
+      if (typeof couponCode === "string" && couponCode.trim()) {
+        const now = new Date();
         const validCoupon = await Coupon.findOne({
-          couponCode: couponCode.trim(),
-          endTime: { $gte: new Date() },
+          couponCode: couponCode.trim().toUpperCase(),
+          endTime: { $gte: now },
+          $and: [
+            { $or: [{ status: "active" }, { status: { $exists: false } }] },
+            { $or: [{ startTime: { $exists: false } }, { startTime: null }, { startTime: { $lte: now } }] },
+          ],
         });
-        if (validCoupon && subTotal >= validCoupon.minimumAmount) {
-          discountAmount = (subTotal * validCoupon.discountPercentage) / 100;
+        if (validCoupon) {
+          eligibleSubtotal = items.reduce((total, item) => {
+            const product = dbProducts.find((candidate) => candidate._id.toString() === String(item._id || item.productId));
+            const quantity = Number(item.orderQuantity || item.quantity) || 1;
+            return product?.productType?.toLowerCase() === validCoupon.productType?.toLowerCase()
+              ? total + Number(product.price) * quantity
+              : total;
+          }, 0);
+          if (eligibleSubtotal >= validCoupon.minimumAmount) {
+            discountAmount = (eligibleSubtotal * validCoupon.discountPercentage) / 100;
+          }
         }
       }
 

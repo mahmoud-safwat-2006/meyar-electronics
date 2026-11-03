@@ -172,6 +172,8 @@ exports.updateProductService = async (id, currProduct) => {
   if (currProduct.unit !== undefined) product.unit = currProduct.unit;
   if (currProduct.imageURLs !== undefined) product.imageURLs = currProduct.imageURLs;
   if (currProduct.tags !== undefined) product.tags = currProduct.tags;
+  if (currProduct.sizes !== undefined) product.sizes = currProduct.sizes;
+  if (currProduct.featured !== undefined) product.featured = Boolean(currProduct.featured);
   if (currProduct.parent !== undefined) product.parent = currProduct.parent;
   if (currProduct.children !== undefined) product.children = currProduct.children;
   if (currProduct.price !== undefined) product.price = Number(currProduct.price);

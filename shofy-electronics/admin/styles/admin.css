@@ -1,0 +1,437 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --safwa-bg: #f8fafc;
+  --safwa-card: #ffffff;
+  --safwa-border: #e2e8f0;
+  --safwa-border-soft: #edf1f5;
+  --safwa-green: #048754;
+  --safwa-green-hover: #036c43;
+  --safwa-green-soft: #ecfdf5;
+  --safwa-text: #14251e;
+  --safwa-muted: #64748b;
+  --safwa-subtle: #94a3b8;
+  --safwa-emerald: #10b981;
+  --safwa-amber: #f59e0b;
+  --safwa-blue: #2563eb;
+  --safwa-rose: #e11d48;
+  --safwa-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  --safwa-shadow-md: 0 10px 28px rgba(15, 23, 42, .08);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body, #__next { min-height: 100%; margin: 0; }
+body { background: var(--safwa-bg); color: var(--safwa-text); font-size: 15px; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled, select:disabled { cursor: not-allowed; opacity: .56; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.font-cairo { font-family: "Cairo", sans-serif !important; }
+.font-sans { font-family: "Plus Jakarta Sans", sans-serif !important; }
+
+#__next :is(button, input, select, textarea, label, th, td, a, p, small, strong),
+#__next span:not(.safwa-kpi-value):not(.safwa-hero-watermark):not(.safwa-dept-icon):not(.safwa-kpi-icon) {
+  font-size: 13px;
+}
+#__next :is(.safwa-panel-heading h2, .safwa-role-legend h2) { font-size: 16px; }
+
+.safwa-app { min-height: 100vh; display: flex; background: var(--safwa-bg); color: var(--safwa-text); }
+.safwa-sidebar { position: sticky; inset-block-start: 0; z-index: 30; width: 270px; min-width: 270px; height: 100vh; display: flex; flex-direction: column; background: #fff; border-inline-end: 1px solid var(--safwa-border); }
+.safwa-brand { min-height: 84px; display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--safwa-border-soft); }
+.safwa-logo-box { width: 42px; height: 42px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 13px 13px 13px 5px; background: linear-gradient(140deg, #048754, #16a475); color: #fff; font-size: 23px; font-weight: 800; box-shadow: 0 6px 15px #04875428; }
+.safwa-brand-copy { min-width: 0; display: flex; flex-direction: column; }
+.safwa-brand-title { display: flex; align-items: center; gap: 7px; color: #10251c; font-size: 15px; font-weight: 800; letter-spacing: .3px; }
+.safwa-brand-title small { padding: 2px 5px; border: 1px solid #a7f3d0; border-radius: 4px; background: var(--safwa-green-soft); color: var(--safwa-green); font-family: "Plus Jakarta Sans", sans-serif; font-size: 8px; letter-spacing: .5px; }
+.safwa-brand-sub { margin-top: 3px; color: var(--safwa-muted); font-size: 9px; }
+.safwa-workspace-label, .safwa-section-label { padding-inline: 21px; color: var(--safwa-subtle); font-size: 9px; font-weight: 700; }
+.safwa-workspace-label { margin-top: 23px; margin-bottom: 9px; }
+.safwa-workspace { display: flex; align-items: center; gap: 10px; margin: 0 14px; padding: 10px; border: 1px solid var(--safwa-border); border-radius: 9px; background: #fff; }
+.safwa-workspace-mark { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 8px; background: #edf6f1; color: var(--safwa-green); font-family: "Plus Jakarta Sans", sans-serif; font-size: 15px; font-weight: 800; }
+.safwa-workspace > span:nth-child(2) { min-width: 0; display: flex; flex: 1; flex-direction: column; }
+.safwa-workspace strong { font-size: 10px; font-weight: 700; }
+.safwa-workspace small { margin-top: 3px; color: var(--safwa-subtle); font-size: 8px; }
+.safwa-workspace > i { width: 7px; height: 7px; border-radius: 50%; background: var(--safwa-emerald); box-shadow: 0 0 0 3px #d1fae5; }
+.safwa-section-label { margin-top: 28px; margin-bottom: 10px; }
+.safwa-nav { display: grid; gap: 4px; padding: 0 10px; }
+.safwa-nav-link { position: relative; min-height: 41px; display: flex; align-items: center; gap: 10px; padding: 0 10px; border: 0; border-radius: 7px; background: transparent; color: #586777; text-align: start; font-size: 10px; font-weight: 600; transition: background .16s, color .16s; }
+.safwa-nav-link:hover { background: #f5f8f7; color: var(--safwa-green); }
+.safwa-nav-link.active { background: var(--safwa-green-soft); color: var(--safwa-green); }
+.safwa-nav-link.active::before { position: absolute; inset-block: 9px; inset-inline-start: 0; width: 3px; border-radius: 4px; background: var(--safwa-green); content: ""; }
+.safwa-nav-icon { width: 20px; display: inline-flex; flex: 0 0 auto; justify-content: center; }
+.safwa-nav-label { flex: 1; }
+.safwa-nav-badge { min-width: 20px; padding: 3px 5px; border-radius: 20px; background: #fff1f2; color: #be123c; font-family: "Plus Jakarta Sans", sans-serif; font-size: 8px; text-align: center; }
+.safwa-nav-badge.warning { background: #fff7ed; color: #c2410c; }
+.safwa-sidebar-footer { display: grid; gap: 10px; margin-top: auto; padding: 13px; border-top: 1px solid var(--safwa-border-soft); }
+.safwa-db-badge { min-height: 33px; display: flex; align-items: center; gap: 7px; padding: 7px 9px; border: 1px solid var(--safwa-border); border-radius: 7px; background: #fff; }
+.safwa-db-dot { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #f59e0b; }
+.safwa-db-badge.connected .safwa-db-dot { background: var(--safwa-emerald); box-shadow: 0 0 0 3px #d1fae5; }
+.safwa-db-badge.offline .safwa-db-dot { background: var(--safwa-rose); }
+.safwa-db-text { flex: 1; color: #657587; font-size: 8px; }
+.safwa-db-badge.connected .safwa-db-text { color: #18764f; }
+.safwa-db-port { color: var(--safwa-subtle); font-family: "Plus Jakarta Sans", sans-serif; font-size: 8px; }
+.safwa-user-card { min-width: 0; display: flex; align-items: center; gap: 9px; padding: 4px 3px; }
+.safwa-avatar { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #e8f2ed; color: #237b58; font-size: 13px; font-weight: 700; }
+.safwa-user-card > span:last-child { min-width: 0; display: flex; flex-direction: column; }
+.safwa-user-card strong { overflow: hidden; color: #293849; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.safwa-user-card small { margin-top: 3px; overflow: hidden; color: #8492a1; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.safwa-logout { width: 100%; min-height: 34px; }
+.safwa-content-area { min-width: 0; flex: 1; display: flex; flex-direction: column; }
+.safwa-topbar { position: sticky; inset-block-start: 0; z-index: 20; min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 29px; border-bottom: 1px solid var(--safwa-border); background: #ffffffed; backdrop-filter: blur(12px); }
+.safwa-topbar-heading { min-width: 150px; flex: 1; }
+.safwa-breadcrumb { display: flex; align-items: center; gap: 9px; color: #94a0ae; font-size: 9px; }
+.safwa-breadcrumb strong { color: #2d3b4b; font-weight: 700; }
+.safwa-topbar-heading > p { margin: 4px 0 0; overflow: hidden; color: #91a0ad; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.safwa-topbar-actions { display: flex; align-items: center; gap: 8px; }
+.safwa-global-search { position: relative; width: clamp(180px, 23vw, 315px); height: 35px; display: flex; align-items: center; gap: 7px; padding: 0 9px; border: 1px solid #e6ebef; border-radius: 7px; background: #fdfefe; color: #8794a2; }
+.safwa-global-search:focus-within { border-color: #85c9ab; box-shadow: 0 0 0 3px #04875412; }
+.safwa-global-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #354456; font-size: 9px; }
+.safwa-global-search input::placeholder { color: #a0aab6; }
+.safwa-search-results { position: absolute; inset-block-start: calc(100% + 7px); inset-inline-start: 0; z-index: 50; width: 100%; max-height: 320px; overflow: auto; padding: 5px; border: 1px solid var(--safwa-border); border-radius: 8px; background: white; box-shadow: var(--safwa-shadow-md); }
+.safwa-search-results > button { width: 100%; display: flex; align-items: center; gap: 9px; padding: 8px; border: 0; border-radius: 6px; background: #fff; text-align: start; }
+.safwa-search-results > button:hover { background: #f5faf7; }
+.safwa-search-result-icon { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 6px; background: #edf7f2; color: var(--safwa-green); }
+.safwa-search-results > button > span:last-child { min-width: 0; display: flex; flex: 1; flex-direction: column; }
+.safwa-search-results strong { overflow: hidden; color: #344255; font-size: 9px; text-overflow: ellipsis; }
+.safwa-search-results small { margin-top: 3px; color: #8c9aaa; font-size: 8px; }
+.safwa-search-empty { margin: 0; padding: 12px 9px; color: #8793a1; font-size: 9px; }
+.safwa-icon-button { min-width: 31px; min-height: 31px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0 8px; border: 1px solid var(--safwa-border); border-radius: 7px; background: #fff; color: #647487; font-size: 9px; transition: .15s ease; }
+.safwa-icon-button:hover { border-color: #b6dfcb; background: #f2faf6; color: var(--safwa-green); }
+.safwa-alert-button { position: relative; }
+.safwa-alert-button > i { position: absolute; inset-block-start: 5px; inset-inline-end: 6px; width: 6px; height: 6px; border: 1px solid #fff; border-radius: 50%; background: var(--safwa-rose); }
+.safwa-store-link { min-height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 9px; border: 1px solid #dfe9e3; border-radius: 7px; background: #f8fcf9; color: #197450; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.safwa-store-link:hover { border-color: #b8d9c7; background: var(--safwa-green-soft); }
+.safwa-server-time { color: #8391a0; font-size: 8px; white-space: nowrap; }
+.safwa-refresh-button, .safwa-mobile-menu { width: 31px; height: 31px; display: inline-grid; place-items: center; border: 1px solid var(--safwa-border); border-radius: 7px; background: #fff; color: #668072; font-size: 17px; }
+.safwa-mobile-menu { display: none; }
+.safwa-main-body { width: 100%; max-width: 1800px; flex: 1; margin: 0 auto; padding: 26px 30px 44px; }
+.safwa-page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 17px; }
+.safwa-page-heading h1 { margin: 5px 0 3px; color: #172b22; font-size: 21px; font-weight: 800; letter-spacing: -.5px; }
+.safwa-page-heading p { max-width: 720px; margin: 0; color: #768695; font-size: 9px; line-height: 1.7; }
+.safwa-eyebrow { color: var(--safwa-green); font-size: 8px; font-weight: 800; letter-spacing: .6px; }
+.safwa-page-actions { display: flex; align-items: center; gap: 8px; }
+.safwa-card { min-width: 0; border: 1px solid var(--safwa-border); border-radius: 10px; background: var(--safwa-card); box-shadow: var(--safwa-shadow); }
+.safwa-panel { padding: 17px; }
+.safwa-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.safwa-panel-heading h2 { margin: 0; color: #22352a; font-size: 12px; font-weight: 800; }
+.safwa-panel-heading p { margin: 4px 0 0; color: #8996a3; font-size: 8px; }
+.safwa-text-link { color: var(--safwa-green); font-size: 8px; font-weight: 700; white-space: nowrap; }
+.safwa-text-link:hover { text-decoration: underline; }
+
+.safwa-hero-banner { position: relative; min-height: 148px; display: flex; align-items: center; justify-content: space-between; overflow: hidden; margin-bottom: 14px; padding: 22px 26px; border-radius: 12px; background: linear-gradient(112deg, #104332, #087752 67%, #149b70); color: #fff; }
+.safwa-hero-copy { position: relative; z-index: 1; }
+.safwa-hero-label { color: #b8e4d1; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.safwa-hero-copy h1 { margin: 9px 0 5px; font-size: 20px; font-weight: 800; }
+.safwa-hero-copy p { margin: 0; color: #d3ebe0; font-size: 9px; }
+.safwa-hero-meta { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; padding: 9px 11px; border: 1px solid #ffffff36; border-radius: 8px; background: #ffffff12; font-size: 9px; }
+.safwa-hero-meta small { color: #b8e0ce; font-size: 8px; }
+.safwa-live-indicator { display: inline-flex; align-items: center; gap: 6px; color: #e1faec; font-size: 8px; }
+.safwa-live-indicator i { width: 6px; height: 6px; border-radius: 50%; background: #6ee7b7; box-shadow: 0 0 0 3px #6ee7b72b; }
+.safwa-hero-watermark { position: absolute; inset-block-end: -48px; inset-inline-start: 25%; color: #ffffff0e; font-size: 195px; font-weight: 800; line-height: 1; pointer-events: none; }
+.safwa-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+.safwa-kpi-card { position: relative; min-height: 120px; display: flex; flex-direction: column; align-items: flex-start; padding: 14px; }
+.safwa-kpi-icon { width: 29px; height: 29px; display: grid; place-items: center; margin-bottom: 8px; border-radius: 8px; font-size: 14px; }
+.safwa-kpi-icon.emerald { background: #ecfdf5; color: #059669; }
+.safwa-kpi-icon.blue { background: #eff6ff; color: #2563eb; }
+.safwa-kpi-icon.violet { background: #f5f3ff; color: #7c3aed; }
+.safwa-kpi-icon.amber { background: #fffbeb; color: #b45309; }
+.safwa-kpi-label { color: #738293; font-size: 9px; font-weight: 600; }
+.safwa-kpi-value { margin-top: 4px; color: #192d24; font-family: "Plus Jakarta Sans", "Cairo", sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.5px; }
+.safwa-kpi-value.negative { color: var(--safwa-rose); }
+.safwa-kpi-foot { max-width: 100%; margin-top: 6px; color: #96a2ae; font-size: 7px; line-height: 1.5; }
+.safwa-secondary-kpis .safwa-kpi-card { min-height: 86px; }
+.safwa-compact-kpi .safwa-kpi-value { font-size: 16px; }
+.safwa-section-card { margin-bottom: 13px; }
+.safwa-dept-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; margin-bottom: 11px; }
+.safwa-dept-box { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 12px 10px; border: 1px solid #e9eef2; border-radius: 8px; background: #fbfcfd; transition: .16s ease; }
+.safwa-dept-box:hover { transform: translateY(-2px); border-color: #b7ddca; background: #fff; box-shadow: var(--safwa-shadow-md); }
+.safwa-dept-icon { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 8px; font-size: 16px; }
+.safwa-dept-icon.emerald { background: #ecfdf5; color: #059669; }
+.safwa-dept-icon.blue { background: #eff6ff; color: #2563eb; }
+.safwa-dept-icon.rose { background: #fff1f2; color: #e11d48; }
+.safwa-dept-icon.amber { background: #fffbeb; color: #b45309; }
+.safwa-dept-icon.violet { background: #f5f3ff; color: #7c3aed; }
+.safwa-dept-icon.cyan { background: #ecfeff; color: #0891b2; }
+.safwa-dept-name { min-height: 24px; overflow: hidden; color: #425366; font-size: 8px; font-weight: 700; line-height: 1.5; text-overflow: ellipsis; }
+.safwa-dept-box > strong { color: #21362b; font-size: 12px; }
+.safwa-dept-box > strong small, .safwa-dept-sales small { color: #93a0ad; font-size: 7px; font-weight: 500; }
+.safwa-dept-sales { color: #2f7957; font-size: 8px; font-weight: 700; }
+.safwa-dashboard-lower { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(230px, .8fr); gap: 12px; margin-top: 13px; }
+.safwa-orders-panel, .safwa-status-panel { min-width: 0; padding: 0; overflow: hidden; }
+.safwa-orders-panel > .safwa-panel-heading, .safwa-status-panel > .safwa-panel-heading { margin: 0; padding: 16px; border-bottom: 1px solid var(--safwa-border-soft); }
+.safwa-table-scroll { width: 100%; overflow-x: auto; }
+.safwa-table { width: 100%; border-collapse: collapse; text-align: start; white-space: nowrap; }
+.safwa-table th { padding: 10px 12px; border-bottom: 1px solid var(--safwa-border); background: #f8fafc; color: #7a8998; font-size: 8px; font-weight: 700; }
+.safwa-table td { padding: 11px 12px; border-bottom: 1px solid #eff2f5; color: #566578; font-size: 8px; vertical-align: middle; }
+.safwa-table tbody tr:last-child td { border-bottom: 0; }
+.safwa-table tbody tr:hover td { background: #fbfdfc; }
+.safwa-mono { font-family: "Plus Jakarta Sans", monospace; font-size: 8px !important; }
+.safwa-id { color: #137650 !important; font-weight: 800; }
+.safwa-strong { color: #263a2f !important; font-weight: 700; }
+.safwa-status { display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 20px; font-size: 7px; font-weight: 700; white-space: nowrap; }
+.safwa-status > i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.safwa-status-success { background: #d1fae5; color: #047857; }
+.safwa-status-warning { background: #fef3c7; color: #b45309; }
+.safwa-status-info { background: #dbeafe; color: #1d4ed8; }
+.safwa-status-danger { background: #ffe4e6; color: #be123c; }
+.safwa-status-neutral { background: #f1f5f9; color: #64748b; }
+.safwa-status-list { display: grid; gap: 13px; padding: 17px 15px; }
+.safwa-status-row > div:first-child { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.safwa-status-row > div:first-child > strong { color: #506072; font-family: "Plus Jakarta Sans", sans-serif; font-size: 8px; }
+.safwa-progress { height: 5px; overflow: hidden; border-radius: 5px; background: #f1f5f7; }
+.safwa-progress > i { display: block; height: 100%; border-radius: inherit; background: var(--safwa-emerald); }
+.safwa-progress .status-processing { background: var(--safwa-amber); }
+.safwa-progress .status-shipped { background: var(--safwa-blue); }
+.safwa-progress .status-cancel, .safwa-progress .status-returned { background: var(--safwa-rose); }
+
+.safwa-btn-primary, .safwa-btn-secondary { min-height: 33px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 1px solid transparent; border-radius: 6px; font-size: 9px; font-weight: 700; transition: .15s ease; white-space: nowrap; }
+.safwa-btn-primary { background: var(--safwa-green); color: #fff; box-shadow: 0 3px 8px #04875422; }
+.safwa-btn-primary:hover { background: var(--safwa-green-hover); transform: translateY(-1px); }
+.safwa-btn-secondary { border-color: var(--safwa-border); background: #fff; color: #59697a; }
+.safwa-btn-secondary:hover { border-color: #c8d8cf; background: #f8fbf9; color: var(--safwa-green); }
+.safwa-input, .safwa-select { width: 100%; min-height: 34px; padding: 0 9px; border: 1px solid #dfe6eb; border-radius: 6px; outline: 0; background: #fff; color: #334457; font-size: 9px; transition: border-color .15s, box-shadow .15s; }
+.safwa-input::placeholder { color: #a0aab5; }
+.safwa-input:focus, .safwa-select:focus { border-color: #75b99b; box-shadow: 0 0 0 3px #04875414; }
+textarea.safwa-input { min-height: 75px; padding-block: 8px; resize: vertical; }
+.safwa-field { min-width: 0; display: flex; flex-direction: column; gap: 6px; color: #526274; font-size: 8px; font-weight: 700; }
+.safwa-field > small { color: #929eaa; font-size: 7px; font-weight: 400; line-height: 1.5; }
+.safwa-field-wide { grid-column: 1 / -1; }
+.safwa-alert { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 9px 11px; border: 1px solid #dce8f3; border-radius: 7px; background: #f6faff; color: #56718c; font-size: 8px; line-height: 1.6; }
+.safwa-alert-info { border-color: #dce8f3; background: #f6faff; color: #56718c; }
+.safwa-alert-warning { border-color: #f6e8c2; background: #fffcf3; color: #966c1f; }
+.safwa-alert-success { border-color: #d1eee0; background: #f1fbf5; color: #26734f; }
+.safwa-alert-error { border-color: #f4d6db; background: #fff7f8; color: #b44559; }
+.safwa-inline-button { margin-inline-start: auto; border: 0; background: transparent; color: currentColor; font-size: 8px; font-weight: 700; text-decoration: underline; }
+.safwa-alert-close { margin-inline-start: auto; border: 0; background: transparent; color: inherit; font-size: 15px; }
+.safwa-state { min-height: 115px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; color: #8795a4; font-size: 9px; text-align: center; }
+.safwa-state-error { color: #b44559; }
+.safwa-state-error p { max-width: 480px; margin: 0 0 7px; }
+.safwa-spinner { width: 18px; height: 18px; border: 2px solid #d8eee3; border-top-color: var(--safwa-green); border-radius: 50%; animation: safwa-spin .8s linear infinite; }
+.safwa-loading-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; gap: 10px; color: #738294; font-size: 10px; }
+@keyframes safwa-spin { to { transform: rotate(360deg); } }
+.safwa-result-count { color: #8b98a5; font-size: 8px; white-space: nowrap; }
+
+.safwa-department-tabs { display: flex; gap: 6px; overflow-x: auto; margin: 3px 0 12px; padding: 0 1px 5px; }
+.safwa-department-tabs > button { min-height: 31px; padding: 0 10px; border: 1px solid #e3e9ee; border-radius: 6px; background: #fff; color: #6e7c8b; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.safwa-department-tabs > button:hover { border-color: #c2ddce; color: var(--safwa-green); }
+.safwa-department-tabs > button.active { border-color: #b5e3cd; background: #e9f8f0; color: #08714a; }
+.safwa-product-panel, .safwa-orders-card, .safwa-staff-panel, .safwa-coupon-panel, .safwa-audit-panel { padding: 0; overflow: hidden; }
+.safwa-table-toolbar { min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; border-bottom: 1px solid var(--safwa-border-soft); }
+.safwa-search-form { width: min(100%, 370px); display: flex; gap: 6px; }
+.safwa-filter-group { display: flex; align-items: center; gap: 8px; }
+.safwa-select { min-width: 125px; width: auto; min-height: 32px; padding-inline: 8px 24px; }
+.safwa-product-table { min-width: 800px; }
+.safwa-product-table td, .safwa-product-table th { padding-inline: 13px; }
+.safwa-product-cell, .safwa-staff-cell { display: flex; align-items: center; gap: 8px; }
+.safwa-product-cell img { width: 38px; height: 38px; flex: 0 0 auto; border: 1px solid #edf0f2; border-radius: 7px; background: #f5f7f8; object-fit: cover; }
+.safwa-product-cell > span, .safwa-staff-cell > span:last-child { min-width: 0; display: flex; flex-direction: column; }
+.safwa-product-cell strong, .safwa-staff-cell strong { max-width: 195px; overflow: hidden; color: #334457; font-size: 8px; font-weight: 700; text-overflow: ellipsis; }
+.safwa-product-cell small, .safwa-staff-cell small { max-width: 190px; overflow: hidden; margin-top: 4px; color: #95a1ad; font-size: 7px; text-overflow: ellipsis; }
+.safwa-sector-tag { display: inline-block; padding: 4px 6px; border-radius: 5px; background: #f0f5f3; color: #507362; font-size: 7px; }
+.safwa-secondary-line { display: block; margin-top: 4px; color: #94a0ad; font-size: 7px; }
+.safwa-stock-value { color: #3c5163; font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; }
+.safwa-stock-value.low { color: #d18a17; }
+.safwa-row-actions { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.safwa-row-actions .safwa-icon-button { min-width: 27px; min-height: 27px; padding: 0 6px; }
+.safwa-icon-button.danger { color: #be4256; }
+.safwa-icon-button.danger:hover { border-color: #f4d0d6; background: #fff5f6; color: #b4233b; }
+.safwa-table-footer { padding: 9px 13px; border-top: 1px solid #eff2f5; color: #8d99a6; font-size: 7px; line-height: 1.6; }
+.safwa-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 13px; border-top: 1px solid var(--safwa-border-soft); color: #8693a0; font-size: 8px; }
+.safwa-pagination > div { display: flex; gap: 6px; }
+.safwa-pagination .safwa-btn-secondary { min-height: 27px; }
+
+.safwa-order-filters { display: grid; grid-template-columns: repeat(5, minmax(115px, 1fr)) auto; align-items: end; gap: 10px; margin-bottom: 11px; padding: 13px; }
+.safwa-filter-submit { display: flex; gap: 5px; }
+.safwa-orders-card > .safwa-panel-heading { margin: 0; padding: 14px; border-bottom: 1px solid var(--safwa-border-soft); }
+.safwa-order-table { min-width: 920px; }
+.safwa-order-table th, .safwa-order-table td { padding-inline: 11px; }
+.safwa-address { max-width: 210px; overflow: hidden; text-overflow: ellipsis; }
+.safwa-status-select { min-width: 105px; min-height: 28px; }
+.safwa-order-actions { display: flex; align-items: center; gap: 5px; }
+.safwa-print-button { min-height: 27px; padding-inline: 7px; font-size: 7px; }
+.safwa-footnote { margin: 9px 2px 0; color: #8694a2; font-size: 8px; line-height: 1.7; }
+
+.safwa-staff-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 11px; padding: 11px 13px; }
+.safwa-staff-toolbar .safwa-search-form { width: min(100%, 370px); }
+.safwa-staff-table { min-width: 820px; }
+.safwa-staff-cell .safwa-avatar { width: 31px; height: 31px; font-size: 11px; }
+.safwa-role-chip { display: inline-flex; padding: 5px 7px; border: 1px solid #e9edf0; border-radius: 5px; background: #f7f9fa; color: #58697a; font-size: 7px; }
+.safwa-muted-cell { color: #99a4ae !important; font-size: 7px !important; }
+.safwa-role-legend { margin-top: 13px; padding: 14px; border: 1px solid var(--safwa-border); border-radius: 9px; background: #fff; }
+.safwa-role-legend h2 { margin: 0 0 9px; color: #344657; font-size: 10px; }
+.safwa-role-legend > div { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.safwa-coupon-table { min-width: 850px; }
+.safwa-coupon-code { display: inline-block; padding: 5px 7px; border: 1px dashed #ded9ef; border-radius: 4px; background: #f8f6fc; color: #7255b7; font-family: "Plus Jakarta Sans", monospace; font-size: 8px; font-weight: 800; letter-spacing: .4px; }
+.safwa-coupon-search { max-width: 360px; }
+.safwa-mono-input { font-family: "Plus Jakarta Sans", monospace; font-weight: 700; letter-spacing: .8px; }
+
+.safwa-finance-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 12px 0; }
+.safwa-finance-kpi { min-height: 115px; display: flex; flex-direction: column; padding: 15px; }
+.safwa-finance-kpi > span { color: #6f7e8d; font-size: 8px; font-weight: 700; }
+.safwa-finance-kpi > strong { margin-top: 10px; color: #19362a; font-family: "Plus Jakarta Sans", sans-serif; font-size: 19px; }
+.safwa-finance-kpi > small { margin-top: 7px; color: #8d9aa5; font-size: 7px; line-height: 1.6; }
+.safwa-finance-chart { height: 208px; display: flex; align-items: flex-end; justify-content: space-around; gap: 8px; padding: 17px 7px 0; }
+.safwa-finance-bar { height: 100%; min-width: 0; display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: flex-end; gap: 7px; }
+.safwa-finance-bar > span { max-width: 100%; overflow: hidden; color: #6e8176; font-size: 7px; text-overflow: ellipsis; }
+.safwa-finance-bar > i { width: min(44px, 75%); min-height: 5px; border-radius: 5px 5px 2px 2px; background: linear-gradient(0deg, #078452, #6cc59d); }
+.safwa-finance-bar > small { color: #8c99a5; font-size: 7px; white-space: nowrap; }
+.safwa-gateway-row { display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 0; border-bottom: 1px solid #eef1f3; }
+.safwa-gateway-logo { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--safwa-border); border-radius: 7px; color: #586781; font-family: "Plus Jakarta Sans", sans-serif; font-size: 16px; font-weight: 800; }
+.safwa-gateway-row > span:nth-child(2) { min-width: 0; display: flex; flex: 1; flex-direction: column; }
+.safwa-gateway-row strong { color: #344456; font-size: 8px; }
+.safwa-gateway-row small { margin-top: 3px; color: #93a0ab; font-size: 7px; }
+.safwa-gateway-state { display: inline-flex; align-items: center; gap: 5px; color: #b7792a; font-size: 7px; white-space: nowrap; }
+.safwa-gateway-state > i { width: 6px; height: 6px; border-radius: 50%; background: #e9a23c; }
+.safwa-gateway-state.ready { color: #278361; }
+.safwa-gateway-state.ready > i { background: var(--safwa-emerald); }
+.safwa-audit-table { min-width: 900px; }
+.safwa-audit-action { max-width: 210px; overflow: hidden; color: #5a6b7b !important; text-overflow: ellipsis; }
+
+.safwa-modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow-y: auto; padding: 20px; background: #12241888; backdrop-filter: blur(3px); }
+.safwa-modal { width: min(100%, 650px); max-height: calc(100vh - 40px); overflow-y: auto; padding: 19px; border: 1px solid #e9edf0; border-radius: 11px; background: #fff; box-shadow: 0 22px 65px #0f201c32; }
+.safwa-modal > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+.safwa-modal > header h2 { margin: 4px 0 0; color: #1d3328; font-size: 14px; font-weight: 800; }
+.safwa-modal-form { display: grid; gap: 13px; }
+.safwa-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.safwa-modal-actions { display: flex; justify-content: flex-start; gap: 7px; padding-top: 11px; border-top: 1px solid var(--safwa-border-soft); }
+
+.safwa-login-shell { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; background: #fff; }
+.safwa-login-brand { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; overflow: hidden; padding: 10% 12%; background: linear-gradient(145deg, #123629, #08744e 77%, #119268); color: #fff; }
+.safwa-login-brand .safwa-logo-box { width: 52px; height: 52px; margin-bottom: 50px; border: 1px solid #ffffff52; background: #ffffff12; box-shadow: none; font-size: 30px; }
+.safwa-login-overline { margin: 0 0 12px; color: #b2e3ca; font-family: "Plus Jakarta Sans", sans-serif; font-size: 8px; font-weight: 800; letter-spacing: 2px; }
+.safwa-login-brand h1 { position: relative; z-index: 1; margin: 0; white-space: pre-line; font-size: clamp(32px, 4vw, 54px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.25; }
+.safwa-login-copy { position: relative; z-index: 1; max-width: 360px; margin: 15px 0 0; color: #d0e7dc; font-size: 11px; line-height: 1.8; }
+.safwa-login-orbit { position: absolute; inset-inline-start: -200px; inset-block-end: -250px; width: 600px; height: 600px; border: 1px solid #ffffff24; border-radius: 50%; box-shadow: 0 0 0 50px #ffffff08, 0 0 0 100px #ffffff06; }
+.safwa-login-panel { position: relative; display: flex; align-items: center; justify-content: center; padding: 38px; }
+.safwa-login-form { width: min(100%, 355px); display: grid; gap: 15px; }
+.safwa-login-form h2 { margin: -7px 0 -11px; color: #1b3127; font-size: 23px; font-weight: 800; }
+.safwa-login-form > p { margin: 0 0 8px; color: #8b98a4; font-size: 9px; }
+.safwa-login-form .safwa-field { gap: 7px; }
+.safwa-login-form .safwa-input, .safwa-login-form input { min-height: 40px; }
+.safwa-login-submit { width: 100%; min-height: 41px; justify-content: space-between; margin-top: 1px; font-size: 10px; }
+.safwa-login-submit > span { margin-inline-start: auto; font-size: 15px; }
+.safwa-language-login { justify-self: center; display: inline-flex; align-items: center; gap: 7px; padding: 5px; border: 0; background: transparent; color: var(--safwa-green); font-size: 9px; font-weight: 700; }
+.safwa-login-footer { position: absolute; inset-block-end: 17px; color: #9aa5af; font-size: 7px; }
+.safwa-error { padding: 9px; border: 1px solid #f3d5d9; border-radius: 6px; background: #fff7f8; color: #b94559; font-size: 8px; }
+.safwa-mobile-overlay { display: none; }
+
+@media (min-width: 1600px) {
+  .safwa-sidebar { width: 286px; min-width: 286px; }
+  .safwa-main-body { padding-inline: 38px; }
+}
+@media (max-width: 1180px) {
+  .safwa-sidebar { width: 230px; min-width: 230px; }
+  .safwa-topbar { padding-inline: 18px; }
+  .safwa-main-body { padding-inline: 19px; }
+  .safwa-order-filters { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
+  .safwa-filter-submit { grid-column: 1 / -1; }
+  .safwa-dept-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 850px) {
+  .safwa-sidebar { width: 66px; min-width: 66px; align-items: center; overflow-x: hidden; }
+  .safwa-brand { width: 100%; min-height: 69px; justify-content: center; padding: 12px 4px; }
+  .safwa-brand-copy, .safwa-workspace-label, .safwa-workspace, .safwa-section-label, .safwa-nav-label, .safwa-nav-badge, .safwa-db-badge, .safwa-user-card > span:last-child { display: none; }
+  .safwa-nav { width: 100%; gap: 6px; margin-top: 18px; padding-inline: 7px; }
+  .safwa-nav-link { justify-content: center; padding: 0; }
+  .safwa-nav-link.active::before { inset-inline-start: -7px; }
+  .safwa-nav-icon { width: auto; }
+  .safwa-sidebar-footer { width: 100%; justify-items: center; gap: 6px; padding: 9px 5px; }
+  .safwa-user-card { justify-content: center; }
+  .safwa-logout .safwa-nav-label { display: none; }
+  .safwa-logout .safwa-nav-icon { display: inline-flex; }
+  .safwa-topbar { gap: 9px; }
+  .safwa-dashboard-lower { grid-template-columns: 1fr; }
+  .safwa-status-panel { min-height: auto; }
+  .safwa-status-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .safwa-server-time { display: none; }
+}
+@media (max-width: 640px) {
+  .safwa-sidebar { position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 60; width: 270px; min-width: 270px; align-items: stretch; transform: translateX(-105%); transition: transform .2s ease; box-shadow: none; }
+  [dir="rtl"] .safwa-sidebar { transform: translateX(105%); }
+  .safwa-menu-open .safwa-sidebar { transform: translateX(0); box-shadow: var(--safwa-shadow-md); }
+  .safwa-menu-open .safwa-mobile-overlay { position: fixed; inset: 0; z-index: 55; display: block; border: 0; background: #10201566; }
+  .safwa-menu-open .safwa-brand { justify-content: flex-start; padding-inline: 22px; }
+  .safwa-menu-open .safwa-brand-copy, .safwa-menu-open .safwa-workspace-label, .safwa-menu-open .safwa-workspace, .safwa-menu-open .safwa-section-label, .safwa-menu-open .safwa-nav-label, .safwa-menu-open .safwa-db-badge, .safwa-menu-open .safwa-user-card > span:last-child { display: flex; }
+  .safwa-menu-open .safwa-workspace-label, .safwa-menu-open .safwa-section-label { display: block; }
+  .safwa-menu-open .safwa-workspace-label { margin: 23px 0 9px; }
+  .safwa-menu-open .safwa-workspace { display: flex; }
+  .safwa-menu-open .safwa-section-label { margin: 28px 0 10px; }
+  .safwa-menu-open .safwa-nav { margin-top: 0; padding-inline: 10px; }
+  .safwa-menu-open .safwa-nav-link { justify-content: flex-start; padding-inline: 10px; }
+  .safwa-menu-open .safwa-nav-label { display: inline; }
+  .safwa-menu-open .safwa-sidebar-footer { justify-items: stretch; padding: 13px; }
+  .safwa-menu-open .safwa-user-card { justify-content: flex-start; }
+  .safwa-mobile-menu { display: inline-grid; flex: 0 0 auto; }
+  .safwa-topbar { min-height: 60px; padding-inline: 11px; }
+  .safwa-topbar-heading { min-width: 0; }
+  .safwa-topbar-heading > p { display: none; }
+  .safwa-breadcrumb { gap: 5px; font-size: 8px; white-space: nowrap; }
+  .safwa-topbar-actions { gap: 5px; }
+  .safwa-global-search { width: clamp(95px, 28vw, 170px); height: 31px; padding-inline: 6px; }
+  .safwa-global-search input { font-size: 8px; }
+  .safwa-icon-button { min-width: 29px; min-height: 29px; padding-inline: 6px; }
+  .safwa-icon-button > span { display: none; }
+  .safwa-store-link { width: 30px; min-height: 29px; justify-content: center; padding: 0; }
+  .safwa-store-link > span, .safwa-store-link > svg:last-child { display: none; }
+  .safwa-refresh-button { display: none; }
+  .safwa-main-body { padding: 17px 11px 30px; }
+  .safwa-page-heading { align-items: flex-start; gap: 8px; }
+  .safwa-page-heading h1 { font-size: 17px; }
+  .safwa-page-heading p { max-width: 300px; font-size: 8px; }
+  .safwa-page-actions { flex-direction: column; align-items: flex-end; }
+  .safwa-hero-banner { min-height: 130px; padding: 16px; }
+  .safwa-hero-copy { max-width: 76%; }
+  .safwa-hero-copy h1 { font-size: 15px; line-height: 1.6; }
+  .safwa-hero-copy p { font-size: 8px; line-height: 1.6; }
+  .safwa-hero-meta { max-width: 110px; padding: 7px; font-size: 7px; }
+  .safwa-hero-meta > span:nth-child(2) { max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .safwa-hero-watermark { inset-block-end: -28px; font-size: 135px; }
+  .safwa-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 8px; }
+  .safwa-kpi-card { min-height: 106px; padding: 11px; }
+  .safwa-kpi-value { font-size: 16px; }
+  .safwa-kpi-foot { font-size: 7px; }
+  .safwa-secondary-kpis .safwa-kpi-card { min-height: 75px; }
+  .safwa-dept-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .safwa-panel { padding: 12px; }
+  .safwa-orders-panel, .safwa-status-panel { padding: 0; }
+  .safwa-status-list { grid-template-columns: 1fr; }
+  .safwa-table-toolbar { align-items: stretch; flex-direction: column; padding: 10px; }
+  .safwa-search-form { width: 100%; }
+  .safwa-filter-group { flex-wrap: wrap; }
+  .safwa-filter-group .safwa-select { min-width: 0; flex: 1; }
+  .safwa-result-count { margin-inline-start: auto; }
+  .safwa-order-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 10px; }
+  .safwa-filter-submit { grid-column: 1 / -1; }
+  .safwa-filter-submit > button { flex: 1; }
+  .safwa-staff-toolbar { padding: 9px; }
+  .safwa-staff-toolbar .safwa-search-form { width: 75%; }
+  .safwa-finance-kpis { grid-template-columns: 1fr; gap: 8px; }
+  .safwa-finance-kpi { min-height: 88px; }
+  .safwa-finance-kpi > strong { margin-top: 6px; font-size: 17px; }
+  .safwa-finance-chart { gap: 4px; }
+  .safwa-finance-bar > small { font-size: 6px; }
+  .safwa-login-shell { grid-template-columns: 1fr; }
+  .safwa-login-brand { display: none; }
+  .safwa-login-panel { min-height: 100vh; padding: 25px; }
+  .safwa-login-footer { bottom: 14px; }
+  .safwa-modal-backdrop { padding: 10px; }
+  .safwa-modal { max-height: calc(100vh - 20px); padding: 14px; }
+  .safwa-form-grid { grid-template-columns: 1fr; gap: 10px; }
+  .safwa-field-wide { grid-column: auto; }
+  .safwa-department-tabs { margin-inline: -1px; }
+}
+@media (max-width: 390px) {
+  .safwa-topbar { gap: 6px; }
+  .safwa-breadcrumb > span:first-child { display: none; }
+  .safwa-global-search { width: clamp(86px, 26vw, 115px); }
+  .safwa-page-heading p { max-width: 200px; }
+  .safwa-hero-meta { display: none; }
+  .safwa-hero-copy { max-width: 90%; }
+  .safwa-order-filters { grid-template-columns: 1fr; }
+  .safwa-filter-submit { grid-column: auto; }
+  .safwa-filter-group { align-items: stretch; flex-direction: column; }
+  .safwa-filter-group .safwa-select { width: 100%; }
+}

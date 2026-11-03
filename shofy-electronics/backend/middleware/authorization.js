@@ -12,14 +12,22 @@ module.exports = (...allowedRoles) => {
     const userRole = req.user.role.toString().toLowerCase();
 
     // 2. منح الصلاحية الكاملة دائماً للمدير العام (Super Admin)
-    if (userRole === "super admin" || userRole === "ceo") {
+    if (userRole === "super admin" || userRole === "ceo" || userRole === "admin") {
       return next();
     }
 
     // 3. توحيد مقارنة الرتب بدون حساسية لحالة الأحرف لمنع أي أخطاء برمجية
-    const normalizedAllowedRoles = allowedRoles.map((r) =>
-      r.toString().toLowerCase()
-    );
+    const roleAliases = {
+      "operations manager": ["manager"],
+      "catalog editor": ["warehouse manager"],
+      "fulfillment lead": ["logistics officer"],
+      "support agent": ["support staff"],
+      auditor: ["finance manager"],
+    };
+    const normalizedAllowedRoles = allowedRoles.flatMap((role) => {
+      const normalizedRole = role.toString().toLowerCase();
+      return [normalizedRole, ...(roleAliases[normalizedRole] || [])];
+    });
 
     if (!normalizedAllowedRoles.includes(userRole)) {
       return res.status(403).json({

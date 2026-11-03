@@ -58,7 +58,11 @@ const loginAdmin = async (req, res, next) => {
   try {
     const admin = await Admin.findOne({ email: req.body.email });
 
-    if (admin && bcrypt.compareSync(req.body.password, admin.password)) {
+    if (
+      admin &&
+      admin.status !== "Inactive" &&
+      bcrypt.compareSync(req.body.password, admin.password)
+    ) {
       const token = generateToken(admin);
       res.status(200).json({
         token,

@@ -1,9 +1,12 @@
-/** @type {import('next').NextConfig} */
+﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
-    domains: ['i.ibb.co','lh3.googleusercontent.com','res.cloudinary.com'],
+    unoptimized: true,
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' }
+    ],
   },
 }
-
 module.exports = nextConfig
