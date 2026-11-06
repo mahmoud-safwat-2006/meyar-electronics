@@ -15,26 +15,30 @@ import BlogArea from "@/components/blog/electronic/blog-area";
 import InstagramArea from "@/components/instagram/instagram-area";
 import CtaArea from "@/components/cta/cta-area";
 import Footer from "@/layout/footers/footer";
+import NewsletterModal from "@/components/common/newsletter-modal";
 
 export default function Home() {
   return (
     <Wrapper>
-      <SEO pageTitle='Home'/>
-      <Header/>
-      <HomeHeroSlider/>
-      <ElectronicCategory/>
-      <FeatureArea/>
-      <ProductArea/>
-      <BannerArea/>
-      <OfferProducts/>
-      <ProductGadgetArea/>
-      <ProductBanner/>
-       <NewArrivals/>
-      <ProductSmArea/>
-      <BlogArea/>
-      <InstagramArea/>
-      <CtaArea/>
-      <Footer/>
+      <SEO pageTitle="Home" />
+      <Header />
+      <HomeHeroSlider />
+      <ElectronicCategory />
+      <FeatureArea />
+      <ProductArea />
+      <BannerArea />
+      <OfferProducts />
+      <ProductGadgetArea />
+      <ProductBanner />
+      <NewArrivals />
+      <ProductSmArea />
+      <BlogArea />
+      <InstagramArea />
+      <CtaArea />
+      <Footer />
+
+      {/* نافذة النشرة البريدية المنبثقة الترويجية */}
+      <NewsletterModal />
     </Wrapper>
-  )
+  );
 }

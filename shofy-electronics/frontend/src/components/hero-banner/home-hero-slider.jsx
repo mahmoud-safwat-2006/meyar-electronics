@@ -1,158 +1,279 @@
-// external
 import React, { useState } from "react";
-import { Navigation, Pagination, EffectFade } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
 import Link from "next/link";
-// internal
-import slider_img_1 from "@assets/img/slider/slider-img-1.png";
-import slider_img_2 from "@assets/img/slider/slider-img-2.png";
-import slider_img_3 from "@assets/img/slider/slider-img-3.png";
-import shape_1 from "@assets/img/slider/shape/slider-shape-1.png";
-import shape_2 from "@assets/img/slider/shape/slider-shape-2.png";
-import shape_3 from "@assets/img/slider/shape/slider-shape-3.png";
-import shape_4 from "@assets/img/slider/shape/slider-shape-4.png";
-import { ArrowRightLong, SliderNextBtn, SliderPrevBtn, TextShape } from "@/svg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, EffectFade, Autoplay } from "swiper";
+import { ArrowRightLong, SliderNextBtn, SliderPrevBtn } from "@/svg";
 
-// slider data
-const sliderData = [
+// إعدادات وبيانات السلايدات الثلاثة المطابقة تماماً لصور shofy.botble.com
+const slider_data = [
   {
     id: 1,
-    pre_title: { text: "Starting at", price: 274 },
+    pre_title: { text: "Starting at", price: "274.00" },
     title: "The best tablet Collection 2023",
     subtitle: {
-      text_1: "Exclusive offer ",
-      percent: 35,
+      text_1: "Exclusive offer",
+      percent: "-35%",
       text_2: "off this week",
     },
-    img: slider_img_1,
-    green_bg: true,
+    img: "https://shofy.botble.com/storage/main/sliders/slider-1.png",
+    bg_color: "#115061",
+    is_light: false,
+    badge: null,
   },
   {
     id: 2,
-    pre_title: { text: "Starting at", price: 999 },
+    pre_title: { text: "Starting at", price: "999.00" },
     title: "The best note book collection 2023",
     subtitle: {
-      text_1: "Exclusive offer ",
-      percent: 10,
+      text_1: "Exclusive offer",
+      percent: "-10%",
       text_2: "off this week",
     },
-    img: slider_img_2,
-    green_bg: true,
+    img: "https://shofy.botble.com/storage/main/sliders/slider-3.png",
+    bg_color: "#115061",
+    is_light: false,
+    badge: null,
   },
   {
     id: 3,
-    pre_title: { text: "Starting at", price: 999 },
-    title: "The best note book collection 2023",
+    pre_title: { text: "Starting at", price: "999.00" },
+    title: "The best phone collection 2023",
     subtitle: {
-      text_1: "Exclusive offer ",
-      percent: 10,
+      text_1: "Exclusive offer",
+      percent: "-10%",
       text_2: "off this week",
     },
-    img: slider_img_3,
+    img: "https://shofy.botble.com/storage/main/sliders/slider-2.png",
+    bg_color: "#ebf4f5",
     is_light: true,
+    
   },
 ];
 
-function Shape({ img, num }) {
-  return (
-    <Image className={`tp-slider-shape-${num}`} src={img} alt="slider-shape" priority />
-  );
-}
-
 const HomeHeroSlider = () => {
-  const [active,setActive] = useState(false);
+  const [loop, setLoop] = useState(true);
 
-  // handleActiveIndex
-  const handleActiveIndex = (index) => {
-    if(index === 2){
-      setActive(true)
-    }
-    else {
-      setActive(false)
-    }
-  }
   return (
     <>
-      <section className="tp-slider-area p-relative z-index-1">
+      <section className="tp-slider-area p-relative z-index-1" style={{ overflow: "hidden", marginBottom: 0 }}>
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
-          loop={false}
+          spaceBetween={0}
+          loop={loop}
           effect="fade"
+          autoplay={{
+            delay: 5500,
+            disableOnInteraction: false,
+          }}
+          modules={[Navigation, Pagination, EffectFade, Autoplay]}
           navigation={{
             nextEl: ".tp-slider-button-next",
             prevEl: ".tp-slider-button-prev",
           }}
-          onSlideChange={(swiper) => handleActiveIndex(swiper.activeIndex)}
-          pagination={{ el: ".tp-slider-dot", clickable: true }}
-          modules={[Navigation, Pagination, EffectFade]}
-          className={`tp-slider-active tp-slider-variation swiper-container ${
-            active ? "is-light" : ""
-          }`}
+          pagination={{
+            el: ".tp-slider-dot",
+            clickable: true,
+          }}
+          className="tp-slider-active tp-slider-variation"
         >
-          {sliderData.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className={`tp-slider-item tp-slider-height d-flex align-items-center ${
-                item?.green_bg
-                  ? "green-dark-bg"
-                  : item?.is_light
-                  ? "is-light"
-                  : ""
-              }`}
-              style={{ backgroundColor: item.is_light && "#E3EDF6" }}
-            >
-              <div className="tp-slider-shape">
-                <Shape img={shape_1} num="1" />
-                <Shape img={shape_2} num="2" />
-                <Shape img={shape_3} num="3" />
-                <Shape img={shape_4} num="4" />
-              </div>
-              <div className="container">
-                <div className="row align-items-center">
-                  <div className="col-xl-5 col-lg-6 col-md-6">
-                    <div className="tp-slider-content p-relative z-index-1">
-                      <span>
-                        {item.pre_title.text} <b>${item.pre_title.text}</b>
-                      </span>
-                      <h3 className="tp-slider-title">{item.title}</h3>
-                      <p>
-                        {item.subtitle.text_1}
-                        <span>
-                          -{item.subtitle.percent}%
-                          <TextShape />
-                        </span>{" "}
-                        {item.subtitle.text_2}
-                      </p>
+          {slider_data.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div
+                className={`tp-slider-item tp-slider-height d-flex align-items-center ${
+                  item.is_light ? "is-light" : ""
+                }`}
+                style={{
+                  backgroundColor: item.bg_color,
+                  minHeight: "640px",
+                  paddingTop: "90px",
+                  paddingBottom: "80px",
+                  position: "relative",
+                  transition: "background-color 0.5s ease",
+                }}
+              >
+                {/* أشكال تزيينية عائمة */}
+                <div className="tp-slider-shape d-none d-sm-block">
+                  <img
+                    className="tp-slider-shape-1"
+                    src="/assets/img/slider/shape/shape-1.png"
+                    alt="shape"
+                    style={{ pointerEvents: "none" }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  <img
+                    className="tp-slider-shape-2"
+                    src="/assets/img/slider/shape/shape-2.png"
+                    alt="shape"
+                    style={{ pointerEvents: "none" }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  <img
+                    className="tp-slider-shape-3"
+                    src="/assets/img/slider/shape/shape-3.png"
+                    alt="shape"
+                    style={{ pointerEvents: "none" }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  <img
+                    className="tp-slider-shape-4"
+                    src="/assets/img/slider/shape/shape-4.png"
+                    alt="shape"
+                    style={{ pointerEvents: "none" }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
 
-                      <div className="tp-slider-btn">
-                        <Link href="/shop" className="tp-btn tp-btn-2 tp-btn-white">
-                          Shop Now
-                          {" "} <ArrowRightLong />
-                        </Link>
+                <div className="container">
+                  <div className="row align-items-center">
+                    {/* عمود النصوص والزر */}
+                    <div className="col-xl-5 col-lg-6 col-md-6">
+                      <div className="tp-slider-content p-relative z-index-1">
+                        <span
+                          style={{
+                            color: item.is_light ? "#55585b" : "#83b7b8",
+                            fontSize: "16px",
+                            fontWeight: "500",
+                            marginBottom: "12px",
+                            display: "block",
+                          }}
+                        >
+                          {item.pre_title.text} <b style={{ color: item.is_light ? "#010f1c" : "#fff" }}>${item.pre_title.price}</b>
+                        </span>
+
+                        <h3
+                          className="tp-slider-title"
+                          style={{
+                            fontSize: "58px",
+                            lineHeight: "1.15",
+                            color: item.is_light ? "#010f1c" : "#ffffff",
+                            fontWeight: "700",
+                            marginBottom: "20px",
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+
+                        <p
+                          style={{
+                            fontSize: "18px",
+                            color: item.is_light ? "#55585b" : "#b0d1d2",
+                            marginBottom: "35px",
+                          }}
+                        >
+                          {item.subtitle.text_1}{" "}
+                          <span
+                            style={{
+                              color: item.is_light ? "#ff182a" : "#ffd43b",
+                              fontWeight: "700",
+                            }}
+                          >
+                            {item.subtitle.percent}
+                          </span>{" "}
+                          {item.subtitle.text_2}
+                        </p>
+
+                        <div className="tp-slider-btn">
+                          <Link
+                            href="/shop"
+                            className="tp-btn tp-btn-2 tp-btn-white"
+                            style={{
+                              backgroundColor: "#ffffff",
+                              color: "#010f1c",
+                              padding: "14px 34px",
+                              borderRadius: "8px",
+                              fontWeight: "700",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "8px",
+                              boxShadow: "0px 10px 25px rgba(0,0,0,0.1)",
+                            }}
+                          >
+                            Shop Now <ArrowRightLong />
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-xl-7 col-lg-6 col-md-6">
-                    <div className="tp-slider-thumb text-end">
-                      <Image src={item.img} alt="slider-img" />
+
+                    {/* عمود صورة المنتج الكبيرة بارتفاع كامل بدون أي قص */}
+                    <div className="col-xl-7 col-lg-6 col-md-6">
+                      <div
+                        className="tp-slider-thumb text-end p-relative"
+                        style={{
+                          height: "440px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          position: "relative",
+                        }}
+                      >
+                        {/* بادج الخصم الدائري في سلايد الهواتف (انظر الصورة 5) */}
+                        {item.badge && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "20px",
+                              left: "30px",
+                              zIndex: 10,
+                              width: "74px",
+                              height: "74px",
+                              borderRadius: "50%",
+                              background: "linear-gradient(135deg, #f43f5e 0%, #a855f7 100%)",
+                              color: "#fff",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontWeight: "800",
+                              fontSize: "15px",
+                              boxShadow: "0 10px 20px rgba(244,63,94,0.35)",
+                              lineHeight: "1.1",
+                              textAlign: "center",
+                            }}
+                          >
+                            <span>-35%</span>
+                            <span style={{ fontSize: "10px", fontWeight: "600" }}>OFF</span>
+                          </div>
+                        )}
+
+                        <Link href="/shop" style={{ display: "inline-block", maxWidth: "100%", height: "100%" }}>
+                          <img
+                            src={item.img}
+                            alt={item.title}
+                            style={{
+                              maxHeight: "430px",
+                              maxWidth: "100%",
+                              width: "auto",
+                              height: "auto",
+                              objectFit: "contain",
+                              filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.15))",
+                              transition: "transform 0.4s ease",
+                            }}
+                            onError={(e) => {
+                              e.currentTarget.src = "/assets/img/slider/slider-img-1.png";
+                            }}
+                          />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
-          <div className="tp-slider-arrow tp-swiper-arrow">
-            <button type="button" className="tp-slider-button-prev">
-              <SliderPrevBtn />
-            </button>
-            <button type="button" className="tp-slider-button-next">
-              <SliderNextBtn />
-            </button>
-          </div>
-          <div className="tp-slider-dot tp-swiper-dot"></div>
         </Swiper>
+
+        {/* أزرار التنقل يمين ويسار */}
+        <div className="tp-slider-arrow tp-swiper-arrow d-none d-lg-block">
+          <button type="button" className="tp-slider-button-prev" aria-label="Previous Slide">
+            <SliderPrevBtn />
+          </button>
+          <button type="button" className="tp-slider-button-next" aria-label="Next Slide">
+            <SliderNextBtn />
+          </button>
+        </div>
+
+        {/* نقاط الترقيم في أسفل السلايدر */}
+        <div className="tp-slider-dot tp-swiper-dot"></div>
       </section>
     </>
   );
